@@ -1,0 +1,39 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateComplainsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('complains', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('reg_id');
+            $table->unsignedBigInteger('complain_id');
+            $table->string('complain_name');
+            $table->string('complain_type');
+            $table->string('address');
+            $table->string('image')->nullable();
+            $table->timestamps();
+            $table->foreign('reg_id')->references('id')->on('registrations')->onDelete('cascade');
+            $table->foreign('complain_id')->references('id')->on('police_stations')->onDelete('cascade');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('complains');
+    }
+}
