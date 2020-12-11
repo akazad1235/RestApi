@@ -14,7 +14,15 @@ class Registration extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email','password'
+        'name',
+        'email',
+        'phone',
+        'nid',
+        'gender',
+        'birth_day',
+        'address',
+        'image',
+        'password'
     ];
 
     /**

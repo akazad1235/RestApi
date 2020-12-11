@@ -16,14 +16,17 @@ class CreateComplainsTable extends Migration
         Schema::create('complains', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('reg_id');
-            $table->unsignedBigInteger('complain_id');
+            $table->unsignedBigInteger('station_id');
             $table->string('complain_name');
             $table->string('complain_type');
             $table->string('address');
             $table->string('image')->nullable();
+            $table->string('video')->nullable();
+            $table->string('file')->nullable();
+            $table->string('status')->default('pending');
             $table->timestamps();
             $table->foreign('reg_id')->references('id')->on('registrations')->onDelete('cascade');
-            $table->foreign('complain_id')->references('id')->on('police_stations')->onDelete('cascade');
+            $table->foreign('station_id')->references('id')->on('police_stations')->onDelete('cascade');
         });
     }
 

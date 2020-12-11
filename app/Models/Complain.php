@@ -8,10 +8,12 @@ class Complain extends Model
 {
     protected $fillable = [
         'reg_id',
-        'complain_id',
+        'station_id',
         'complain_name',
         'complain_type',
         'address',
         'image',
+        'video',
+        'file',
     ];
 }
